@@ -9,7 +9,7 @@
 #
 
 class User < ActiveRecord::Base
-  attr_writer :password
+  attr_reader :password
 
   after_initialize :ensure_session_token
 
@@ -19,6 +19,8 @@ class User < ActiveRecord::Base
     :session_token,
     presence: true
   )
+
+  validates :password, length: { minimum: 5 }
 
   validates(
     :email,

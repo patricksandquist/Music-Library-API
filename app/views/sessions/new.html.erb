@@ -1,6 +1,6 @@
-<h1>Sign up</h1>
+<h1>Sign in</h1>
 
-<form action="<%= users_url %>" method="post">
+<form action="<%= session_url %>" method="post">
   <%= auth_token %>
   <%= render "shared/errors" if flash[:errors] %>
   <br>
@@ -12,8 +12,8 @@
   <input type="password" name="user[password]]" id="password">
   <br>
 
-  <input type="submit" value="sign up">
+  <input type="submit" value="sign in">
 </form>
 
 <br>
-<%= link_to "sign in", new_session_url %>
+<%= link_to "sign up", new_user_url %>

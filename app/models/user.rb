@@ -20,7 +20,7 @@ class User < ActiveRecord::Base
     presence: true
   )
 
-  validates :password, length: { minimum: 5 }
+  validates :password, length: { minimum: 5 }, allow_nil: true
 
   validates(
     :email,
@@ -40,6 +40,8 @@ class User < ActiveRecord::Base
 
   def reset_session_token!
     self.session_token = generate_session_token
+    self.save!
+    self.session_token
   end
 
   def ensure_session_token
@@ -54,5 +56,4 @@ class User < ActiveRecord::Base
   def is_password?(password)
     BCrypt::Password.new(self.password_digest).is_password?(password)
   end
-
 end

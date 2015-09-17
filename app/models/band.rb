@@ -17,4 +17,10 @@ class Band < ActiveRecord::Base
     primary_key: :id,
     foreign_key: :band_id
   )
+
+  has_many(
+    :tracks,
+    through: :albums,
+    source: :tracks
+  )
 end

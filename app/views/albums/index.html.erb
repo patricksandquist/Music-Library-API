@@ -1,0 +1,9 @@
+<h1>Album Library</h1>
+<ul>
+  <% @albums.each do |album| %>
+    <li><%= link_to album.name, album_url(album) %></li>
+  <% end %>
+</ul>
+
+<br>
+<%= button_to "add new album", new_album_url, method: :get %>

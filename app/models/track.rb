@@ -26,7 +26,7 @@ class Track < ActiveRecord::Base
     foreign_key: :album_id
   )
 
-  belongs_to(
+  has_one(
     :band,
     through: :album,
     source: :band
